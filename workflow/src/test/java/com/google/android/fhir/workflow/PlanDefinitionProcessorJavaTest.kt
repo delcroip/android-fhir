@@ -67,7 +67,7 @@ fun testCHE() =
 @Test
 fun testGoogle() =
     PlanDefinition.Assert.that(
-        "emcaredt01",
+        "emcaredt012",
         "Test-patient",
         "Test-encounter"
     )
