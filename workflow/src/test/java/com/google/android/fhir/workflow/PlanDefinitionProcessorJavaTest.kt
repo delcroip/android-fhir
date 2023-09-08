@@ -49,24 +49,36 @@ class PlanDefinitionProcessorJavaTest {
       .isEqualsTo("/plan-definition/hello-world/hello-world-careplan.json")
 
 
-
 @Test
+fun testApplicabilityCondition() =
+    PlanDefinition.Assert.that(
+        "Plan-Definition-Example",
+        "Female-Patient-Example"
+    )
+        .withData("/plan-definition/cql-applicability-condition/patient.json")
+        .withLibrary("/plan-definition/cql-applicability-condition/plan_definition.json")
+        .apply()
+        .isEqualsTo("/plan-definition/cql-applicability-condition/care_plan.json")
+
+
+    @Test
 fun testCHE() =
     PlanDefinition.Assert.that(
-        "emcaredt01",
+        "che.pd.01",
         "Test-patient",
         "Test-encounter"
     )
         .withData("/plan-definition/che/che-patient-data.json")
-        .withLibrary("/plan-definition/che/che-patient-view-bundle.json")
+        .withLibrary("bundle.json")
         .apply()
         .isEqualsTo("/plan-definition/che/che-careplan.json")
 
 
 
 @Test
-fun testGoogle() =
-    PlanDefinition.Assert.that(
+fun testGoogle() {
+
+    var careplan = PlanDefinition.Assert.that(
         "emcaredt012",
         "Test-patient",
         "Test-encounter"
@@ -74,7 +86,8 @@ fun testGoogle() =
         .withData("/plan-definition/che/che-patient-data.json")
         .withLibrary("/plan-definition/che/gg-patient-view-bundle.json")
         .apply()
-        .isEqualsTo("/plan-definition/che/che-careplan.json")
+    return    careplan.isEqualsTo("/plan-definition/che/che-careplan.json")
+}
     @Test
   @Ignore("https://github.com/google/android-fhir/issues/1890")
   fun testOpioidRec10PatientView() =

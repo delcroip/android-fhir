@@ -11,13 +11,14 @@
   "activity": [
     {
       "reference": {
-        "reference": "#emcaredt01"
+        "reference": "#emcaredt012"
       }
     }
   ],
   "contained": [
     {
       "instantiatesCanonical":"https://fhir.dk.swisstph-mis.ch/matchbox/fhir/PlanDefinition/emcaredt01",
+      "kind": "Task",
       "status":"draft",
       "intent":"proposal",
       "subject": {
@@ -29,7 +30,7 @@
       "focus": {
         "reference" : "Questionnaire/emcareb.registration.e"
       },
-      "id":  "emcaredt01"
+      "id":  "emcaredt012"
     }
   ]
 }

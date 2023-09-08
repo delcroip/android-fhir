@@ -69,6 +69,13 @@
             "language": "text/cql.identifier",
             "expression": "BackReference"
           }
+        },
+        {
+          "path": "input",
+          "expression": {
+            "language": "text/cql-expression",
+            "expression": "{ TaskInput {type: FHIR.CodeableConcept {coding: { FHIR.Coding { system: FHIR.uri { value : 'http://hl7.org/fhir/uv/cpg/CodeSystem/cpg-activity-type-cs' }, code: FHIR.code {value: 'collect-information' } } } },value: Reference {reference: string { value: 'Questionnaire/che.b7-9.lti-dangersigns'} }} }"
+          }
         }
       ]
     },
