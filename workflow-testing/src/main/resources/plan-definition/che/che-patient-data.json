@@ -111,15 +111,13 @@
       }
     ],
     "gender": "male",
-    "birthDate": "1974-12-25",
-    "_birthDate": {
+    "birthDate": "2022-12-25",
       "extension": [
         {
           "url": "https://fhir.dk.swisstph-mis.ch/matchbox/fhir/StructureDefinition/birthTime",
           "valueDateTime": "1974-12-25T14:35:45-05:00"
         }
-      ]
-    },
+      ],
     "deceasedBoolean": false,
     "address": [
       {

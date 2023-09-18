@@ -16,109 +16,131 @@
 
 package com.google.android.fhir.workflow
 
+import ca.uhn.fhir.context.FhirContext
+import ca.uhn.fhir.context.FhirVersionEnum
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.android.fhir.workflow.testing.PlanDefinition
 import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
+
 @RunWith(RobolectricTestRunner::class)
 class PlanDefinitionProcessorJavaTest {
-  @Test
-  fun testChildRoutineVisit() =
-    PlanDefinition.Assert.that(
-        "ChildRoutineVisit-PlanDefinition-1.0.0",
-        "Patient/ChildRoutine-Reportable",
-        null
-      )
-      .withData("/plan-definition/child-routine-visit/child_routine_visit_patient.json")
-      .withLibrary("/plan-definition/child-routine-visit/child_routine_visit_plan_definition.json")
-      .apply()
-      .isEqualsTo("/plan-definition/child-routine-visit/child_routine_visit_careplan.json")
+    private val jsonParser = FhirContext.forCached(FhirVersionEnum.R4).newJsonParser()
 
-  @Test
-  fun testHelloWorld() =
-    PlanDefinition.Assert.that(
-        "hello-world-patient-view",
-        "helloworld-patient-1",
-        "helloworld-patient-1-encounter-1"
-      )
-      .withData("/plan-definition/hello-world/hello-world-patient-data.json")
-      .withLibrary("/plan-definition/hello-world/hello-world-patient-view-bundle.json")
-      .apply()
-      .isEqualsTo("/plan-definition/hello-world/hello-world-careplan.json")
+    @Test
+    fun testChildRoutineVisit() =
+        PlanDefinition.Assert.that(
+            "ChildRoutineVisit-PlanDefinition-1.0.0",
+            "Patient/ChildRoutine-Reportable",
+            null
+        )
+            .withData("/plan-definition/child-routine-visit/child_routine_visit_patient.json")
+            .withLibrary("/plan-definition/child-routine-visit/child_routine_visit_plan_definition.json")
+            .apply()
+            .isEqualsTo("/plan-definition/child-routine-visit/child_routine_visit_careplan.json")
 
-
-@Test
-fun testApplicabilityCondition() =
-    PlanDefinition.Assert.that(
-        "Plan-Definition-Example",
-        "Female-Patient-Example"
-    )
-        .withData("/plan-definition/cql-applicability-condition/patient.json")
-        .withLibrary("/plan-definition/cql-applicability-condition/plan_definition.json")
-        .apply()
-        .isEqualsTo("/plan-definition/cql-applicability-condition/care_plan.json")
+    @Test
+    fun testHelloWorld() =
+        PlanDefinition.Assert.that(
+            "hello-world-patient-view",
+            "helloworld-patient-1",
+            "helloworld-patient-1-encounter-1"
+        )
+            .withData("/plan-definition/hello-world/hello-world-patient-data.json")
+            .withLibrary("/plan-definition/hello-world/hello-world-patient-view-bundle.json")
+            .apply()
+            .isEqualsTo("/plan-definition/hello-world/hello-world-careplan.json")
 
 
     @Test
-fun testCHE() =
-    PlanDefinition.Assert.that(
-        "che.pd.01",
-        "Test-patient",
-        "Test-encounter"
-    )
-        .withData("/plan-definition/che/che-patient-data.json")
-        .withLibrary("bundle.json")
-        .apply()
-        .isEqualsTo("/plan-definition/che/che-careplan.json")
+    fun testApplicabilityCondition() =
+        PlanDefinition.Assert.that(
+            "Plan-Definition-Example",
+            "Female-Patient-Example"
+        )
+            .withData("/plan-definition/cql-applicability-condition/patient.json")
+            .withLibrary("/plan-definition/cql-applicability-condition/plan_definition.json")
+            .apply()
+            .isEqualsTo("/plan-definition/cql-applicability-condition/care_plan.json")
 
 
+    @Test
+    fun testCHE() {
+        var careplan = PlanDefinition.Apply(
+            "che.pd.01",
+            "Test-patient",
+            "Test-encounter"
+        )
+            .withData("/plan-definition/che/che-patient-data.json")
+            .withLibrary("/plan-definition/che/bundle.json")
+            .apply()
+        val json = this.jsonParser.encodeResourceToString(careplan.carePlan)
+    }
 
-@Test
-fun testGoogle() {
+    @Test
+    fun testProposeDiagnosis() {
 
-    var careplan = PlanDefinition.Assert.that(
-        "emcaredt012",
-        "Test-patient",
-        "Test-encounter"
-    )
-        .withData("/plan-definition/che/che-patient-data.json")
-        .withLibrary("/plan-definition/che/gg-patient-view-bundle.json")
-        .apply()
-    return    careplan.isEqualsTo("/plan-definition/che/che-careplan.json")
+        var careplan = PlanDefinition.Assert.that(
+            "emcaredt012",
+            "Test-patient",
+            "Test-encounter"
+        )
+            .withData("/plan-definition/che/che-patient-data.json")
+            .withLibrary("/plan-definition/che/bundle-propose-diagnosis.json")
+            .apply()
+        val json = this.jsonParser.encodeResourceToString(careplan.carePlan)
+        return careplan.isEqualsTo("/plan-definition/che/collect-with-careplan.json")
+    }
+
+    @Test
+    fun testCollectWith() {
+
+        var careplan = PlanDefinition.Assert.that(
+            "emcaredt012",
+            "Test-patient",
+            "Test-encounter"
+        )
+            .withData("/plan-definition/che/che-patient-data.json")
+            .withLibrary("/plan-definition/che/bundle-collect-with.json")
+            .apply()
+        val json = this.jsonParser.encodeResourceToString(careplan.carePlan)
+        return careplan.isEqualsTo("/plan-definition/che/collect-with-careplan.json")
+    }
+
+    @Test
+    @Ignore("https://github.com/google/android-fhir/issues/1890")
+    fun testOpioidRec10PatientView() =
+        PlanDefinition.Assert.that(
+            "opioidcds-10-patient-view",
+            "example-rec-10-patient-view-POS-Cocaine-drugs",
+            "example-rec-10-patient-view-POS-Cocaine-drugs-prefetch"
+        )
+            .withData(
+                "/plan-definition/opioid-Rec10-patient-view/opioid-Rec10-patient-view-patient-data.json"
+            )
+            .withLibrary(
+                "/plan-definition/opioid-Rec10-patient-view/opioid-Rec10-patient-view-bundle.json"
+            )
+            .apply()
+            .isEqualsTo(
+                "/plan-definition/opioid-Rec10-patient-view/opioid-Rec10-patient-view-careplan.json"
+            )
+
+    @Test
+    fun testRuleFiltersNotReportable() =
+        PlanDefinition.Assert.that(
+            "plandefinition-RuleFilters-1.0.0",
+            "NotReportable",
+            null,
+        )
+            .withData("/plan-definition/rule-filters/tests-NotReportable-bundle.json")
+            .withLibrary("/plan-definition/rule-filters/RuleFilters-1.0.0-bundle.json")
+            .apply()
+            .isEqualsTo("/plan-definition/rule-filters/NotReportableCarePlan.json")
 }
-    @Test
-  @Ignore("https://github.com/google/android-fhir/issues/1890")
-  fun testOpioidRec10PatientView() =
-    PlanDefinition.Assert.that(
-        "opioidcds-10-patient-view",
-        "example-rec-10-patient-view-POS-Cocaine-drugs",
-        "example-rec-10-patient-view-POS-Cocaine-drugs-prefetch"
-      )
-      .withData(
-        "/plan-definition/opioid-Rec10-patient-view/opioid-Rec10-patient-view-patient-data.json"
-      )
-      .withLibrary(
-        "/plan-definition/opioid-Rec10-patient-view/opioid-Rec10-patient-view-bundle.json"
-      )
-      .apply()
-      .isEqualsTo(
-        "/plan-definition/opioid-Rec10-patient-view/opioid-Rec10-patient-view-careplan.json"
-      )
-
-  @Test
-  fun testRuleFiltersNotReportable() =
-    PlanDefinition.Assert.that(
-        "plandefinition-RuleFilters-1.0.0",
-        "NotReportable",
-        null,
-      )
-      .withData("/plan-definition/rule-filters/tests-NotReportable-bundle.json")
-      .withLibrary("/plan-definition/rule-filters/RuleFilters-1.0.0-bundle.json")
-      .apply()
-      .isEqualsTo("/plan-definition/rule-filters/NotReportableCarePlan.json")
-
   @Test
   fun testRuleFiltersReportable() =
     PlanDefinition.Assert.that(
@@ -138,4 +160,4 @@ fun testGoogle() {
       .withLibrary("/plan-definition/med-request/med_request_plan_definition.json")
       .apply()
       .isEqualsTo("/plan-definition/med-request/med_request_careplan.json")
-}
+
