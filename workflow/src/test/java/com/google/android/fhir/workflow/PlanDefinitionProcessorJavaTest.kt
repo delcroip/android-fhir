@@ -140,24 +140,32 @@ class PlanDefinitionProcessorJavaTest {
             .withLibrary("/plan-definition/rule-filters/RuleFilters-1.0.0-bundle.json")
             .apply()
             .isEqualsTo("/plan-definition/rule-filters/NotReportableCarePlan.json")
-}
-  @Test
-  fun testRuleFiltersReportable() =
-    PlanDefinition.Assert.that(
-        "plandefinition-RuleFilters-1.0.0",
-        "Reportable",
-        null,
-      )
-      .withData("/plan-definition/rule-filters/tests-Reportable-bundle.json")
-      .withLibrary("/plan-definition/rule-filters/RuleFilters-1.0.0-bundle.json")
-      .apply()
-      .isEqualsTo("/plan-definition/rule-filters/ReportableCarePlan.json")
 
-  @Test
-  fun testAncVisitContainedActivityDefinition() =
-    PlanDefinition.Assert.that("MedRequest-Example", "Patient/Patient-Example")
-      .withData("/plan-definition/med-request/med_request_patient.json")
-      .withLibrary("/plan-definition/med-request/med_request_plan_definition.json")
-      .apply()
-      .isEqualsTo("/plan-definition/med-request/med_request_careplan.json")
+    @Test
+    fun testRuleFiltersReportable() =
+        PlanDefinition.Assert.that(
+            "plandefinition-RuleFilters-1.0.0",
+            "Reportable",
+            null,
+        )
+            .withData("/plan-definition/rule-filters/tests-Reportable-bundle.json")
+            .withLibrary("/plan-definition/rule-filters/RuleFilters-1.0.0-bundle.json")
+            .apply()
+            .isEqualsTo("/plan-definition/rule-filters/ReportableCarePlan.json")
+
+    @Test
+    fun testAncVisitContainedActivityDefinition()  {
+
+        var careplan = PlanDefinition.Assert.that("MedRequest-Example", "Patient/Patient-Example")
+            .withData("/plan-definition/med-request/med_request_patient.json")
+            .withLibrary("/plan-definition/med-request/med_request_plan_definition.json")
+            .apply()
+        val json = this.jsonParser.encodeResourceToString(careplan.carePlan)
+
+        return careplan.isEqualsTo("/plan-definition/med_request/med_request_careplan.json")
+
+    }
+}
+
+
 

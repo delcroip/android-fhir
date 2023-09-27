@@ -31,7 +31,7 @@
   },
     "request": {
       "method": "PUT",
-      "url": "Encounter/helloworld-patient-1-encounter-1"
+      "url": "Encounter/Test-Encounter"
     }
   }, {
     "resource":{"resourceType": "Patient",
@@ -191,7 +191,7 @@
   },
     "request": {
       "method": "PUT",
-      "url": "Patient/helloworld-patient-1"
+      "url": "Patient/Test-Patient"
     }
   } ]
 }

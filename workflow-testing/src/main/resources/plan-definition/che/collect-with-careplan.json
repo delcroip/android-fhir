@@ -23,11 +23,6 @@
           "resource": {
             "reference": "Task/emcaredt03"
           }
-        },
-        {
-          "resource": {
-            "reference": "Task/emcaredt03"
-          }
         }
       ]
     },
@@ -105,54 +100,6 @@
         ]
       }
     },
-    {
-      "resourceType": "Task",
-      "id": "emcaredt03",
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-collectWith",
-          "valueCanonical": "https://fhir.dk.swisstph-mis.ch/matchbox/fhir/Questionnaire/2nd"
-        },
-        {
-          "url": "http://hl7.org/fhir/aphl/StructureDefinition/next",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/aphl/StructureDefinition/target",
-              "valueReference": {
-                "reference": "Task/emcaredt02"
-              }
-            }
-          ]
-        },
-        {
-          "url": "http://hl7.org/fhir/aphl/StructureDefinition/next",
-          "extension": [
-            {
-              "url": "http://hl7.org/fhir/aphl/StructureDefinition/target",
-              "valueReference": {
-                "reference": "Task/emcaredt02"
-              }
-            }
-          ]
-        }
-      ],
-      "basedOn": [
-        {
-          "reference": "#RequestGroup/emcaredt012",
-          "type": "RequestGroup"
-        }
-      ],
-      "status": "draft",
-      "code": {
-        "coding": [
-          {
-            "system": "http://hl7.org/fhir/uv/cpg/CodeSystem/cpg-activity-type-cs",
-            "code": "collect-information",
-            "display": "Collect information"
-          }
-        ]
-      }
-    }
   ],
   "instantiatesCanonical": "https://fhir.dk.swisstph-mis.ch/matchbox/fhir/PlanDefinition/emcaredt012",
   "status": "draft",
