@@ -165,6 +165,18 @@ class PlanDefinitionProcessorJavaTest {
         return careplan.isEqualsTo("/plan-definition/med_request/med_request_careplan.json")
 
     }
+    @Test
+    fun testMeasle()  {
+
+        var careplan = PlanDefinition.Assert.that("IMMZDTUmbrella", "Patient/IMMZ-Patient-enadult-m")
+            .withData("/plan-definition/measles/bundle-data.json")
+            .withLibrary("/plan-definition/measles/bundle-def.json")
+            .apply()
+        val json = this.jsonParser.encodeResourceToString(careplan.carePlan)
+
+        return careplan.isEqualsTo("/plan-definition/med_request/med_request_careplan.json")
+
+    }
 }
 
 

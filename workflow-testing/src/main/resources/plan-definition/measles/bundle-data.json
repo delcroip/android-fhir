@@ -1,0 +1,1284 @@
+{
+    "resourceType": "Bundle",
+    "identifier": {
+        "value": "EmCareBundle"
+    },
+    "type": "batch",
+    "entry": [
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-enadult-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "calciumadult-f"
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "1996-04-08",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-enadult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Condition",
+                "id": "intussuception-NoVaxAdult-m",
+                "clinicalStatus": {
+                    "coding": [
+                        {
+                            "code": "active"
+                        }
+                    ]
+                },
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "41444002",
+                            "display": "Invagination (morphologic abnormality)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-NoVaxAdult-m"
+                },
+                "recordedDate": "2022-03-01"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Condition/intussuception-NoVaxAdult-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-NoVaxenteen-m",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "NoVaxenteen-protactiniumteen-m"
+                    }
+                ],
+                "gender": "male",
+                "birthDate": "2009-11-05",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-NoVaxenteen-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "birthweightlow-NoVaxenteen-f",
+                "status": "final",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "276610007",
+                            "display": "Birthweight"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-NoVaxenteen-f"
+                },
+                "effectiveDateTime": "2009-10-16",
+                "valueQuantity": {
+                    "value": 1877,
+                    "unit": "gram",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "g"
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Observation/birthweightlow-NoVaxenteen-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "MedicationStatement",
+                "id": "haart-NoVaxAdult-f",
+                "status": "completed",
+                "medicationCodeableConcept": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "416234007",
+                            "display": "Highly active anti-retroviral therapy (procedure)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-NoVaxAdult-f"
+                },
+                "effectiveDateTime": "2020-05-27"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "MedicationStatement/haart-NoVaxAdult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "seronegative-NoVaxAdult-m",
+                "status": "final",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "68793005",
+                            "display": "Serologic test (procedure)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-NoVaxAdult-m"
+                },
+                "effectiveDateTime": "2022-03-01",
+                "valueCodeableConcept": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "81321002",
+                            "display": "Seronegative (qualifier value)"
+                        }
+                    ]
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Observation/seronegative-NoVaxAdult-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Immunization",
+                "id": "IMMZ-Immunization-Measles-enchild-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Immunization-uv-ips"
+                    ]
+                },
+                "status": "completed",
+                "vaccineCode": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "440075005",
+                            "display": "Live measles + rubella vaccine injection dose form (product)"
+                        }
+                    ]
+                },
+                "patient": {
+                    "reference": "Patient/IMMZ-Patient-enchild-f"
+                },
+                "occurrenceDateTime": "2019-03-20",
+                "location": {
+                    "display": "Vaccination Site"
+                },
+                "lotNumber": "123",
+                "expirationDate": "2024-06-30",
+                "performer": [
+                    {
+                        "actor": {
+                            "reference": "Organization/IMMZ-Organization-enchild-f"
+                        }
+                    }
+                ],
+                "protocolApplied": [
+                    {
+                        "authority": {
+                            "reference": "Organization/IMMZ-Organization-enchild-f"
+                        },
+                        "doseNumberPositiveInt": 1,
+                        "seriesDosesPositiveInt": 1
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Immunization/IMMZ-Immunization-Measles-enchild-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "vnalevelabove-enadult-f",
+                "status": "final",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "6524-3",
+                            "display": "Rabies virus neutralizing antibody [Units/volume] in Serum by Neutralization test"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-enadult-f"
+                },
+                "effectiveDateTime": "2022-02-02",
+                "valueQuantity": {
+                    "value": 0.7,
+                    "unit": "international unit/milliliter",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "IU/mL"
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Observation/vnalevelabove-enadult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "vnalevelbelow-NoVaxAdult-f",
+                "status": "final",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "6524-3",
+                            "display": "Rabies virus neutralizing antibody [Units/volume] in Serum by Neutralization test"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-NoVaxAdult-f"
+                },
+                "effectiveDateTime": "2021-12-27",
+                "valueQuantity": {
+                    "value": 0.4,
+                    "unit": "international unit/milliliter",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "IU/mL"
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Observation/vnalevelbelow-NoVaxAdult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-enchild-m",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "phosphoruschild-m"
+                    }
+                ],
+                "gender": "male",
+                "birthDate": "2015-04-15",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-enchild-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-enteen-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "rhodiumteen-f"
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "2006-10-16",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-enteen-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-eninfant-m",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "seleniuminfant-m"
+                    }
+                ],
+                "gender": "male",
+                "birthDate": "2022-04-28",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-eninfant-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "birthweightnormal-eninfant-f",
+                "status": "final",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "276610007",
+                            "display": "Birthweight"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-eninfant-f"
+                },
+                "effectiveDateTime": "2022-04-28",
+                "valueQuantity": {
+                    "value": 6855,
+                    "unit": "gram",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "g"
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Observation/birthweightnormal-eninfant-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-NoVaxenteen-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "NoVaxenteen-rhodiumteen-f"
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "2009-10-16",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-NoVaxenteen-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Organization",
+                "id": "IMMZ-Organization-eninfant-f",
+                "name": "Government Hospital"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Organization/IMMZ-Organization-eninfant-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-NoVaxinfant-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "NoVaxinfant-hassiuminfant-f"
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "2022-03-28",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-NoVaxinfant-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "cd4percent-NoVaxAdult-f",
+                "status": "final",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "116745007",
+                            "display": "Cell positive for CD4 antigen (cell)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-NoVaxAdult-f"
+                },
+                "effectiveDateTime": "2020-05-27",
+                "valueQuantity": {
+                    "value": 27,
+                    "unit": "percent",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "%"
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Observation/cd4percent-NoVaxAdult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-enteen-m",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "protactiniumteen-m"
+                    }
+                ],
+                "gender": "male",
+                "birthDate": "2006-11-08",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-enteen-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-NoVaxAdult-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "calciumadult-f"
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "1996-03-08",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-NoVaxAdult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Organization",
+                "id": "IMMZ-Organization-enadult-m",
+                "name": "Government Hospital"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Organization/IMMZ-Organization-enadult-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-enadult-m",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "telluriumadult-m"
+                    }
+                ],
+                "gender": "male",
+                "birthDate": "1993-07-29",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-enadult-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Immunization",
+                "id": "IMMZ-Immunization-Measles-enteen-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Immunization-uv-ips"
+                    ]
+                },
+                "status": "completed",
+                "vaccineCode": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "386012008",
+                            "display": "Measles vaccine (product)"
+                        }
+                    ]
+                },
+                "patient": {
+                    "reference": "Patient/IMMZ-Patient-enteen-f"
+                },
+                "occurrenceDateTime": "2013-10-01",
+                "location": {
+                    "display": "Vaccination Site"
+                },
+                "lotNumber": "123",
+                "expirationDate": "2024-06-30",
+                "performer": [
+                    {
+                        "actor": {
+                            "reference": "Organization/IMMZ-Organization-enteen-f"
+                        }
+                    }
+                ],
+                "protocolApplied": [
+                    {
+                        "authority": {
+                            "reference": "Organization/IMMZ-Organization-enteen-f"
+                        },
+                        "doseNumberPositiveInt": 1,
+                        "seriesDosesPositiveInt": 2
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Immunization/IMMZ-Immunization-Measles-enteen-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Immunization",
+                "id": "IMMZ-Immunization-Measles-enchild-m",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Immunization-uv-ips"
+                    ]
+                },
+                "status": "completed",
+                "vaccineCode": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "440075005",
+                            "display": "Live measles + rubella vaccine injection dose form (product)"
+                        }
+                    ]
+                },
+                "patient": {
+                    "reference": "Patient/IMMZ-Patient-enchild-m"
+                },
+                "occurrenceDateTime": "2021-09-03",
+                "location": {
+                    "display": "Vaccination Site"
+                },
+                "lotNumber": "123",
+                "expirationDate": "2024-06-30",
+                "performer": [
+                    {
+                        "actor": {
+                            "reference": "Organization/IMMZ-Organization-enchild-m"
+                        }
+                    }
+                ],
+                "protocolApplied": [
+                    {
+                        "authority": {
+                            "reference": "Organization/IMMZ-Organization-enchild-m"
+                        },
+                        "doseNumberPositiveInt": 1,
+                        "seriesDosesPositiveInt": 1
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Immunization/IMMZ-Immunization-Measles-enchild-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Immunization",
+                "id": "IMMZ-Immunization-Measles-enteen-m",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Immunization-uv-ips"
+                    ]
+                },
+                "status": "completed",
+                "vaccineCode": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "386012008",
+                            "display": "Measles vaccine (product)"
+                        }
+                    ]
+                },
+                "patient": {
+                    "reference": "Patient/IMMZ-Patient-enteen-m"
+                },
+                "occurrenceDateTime": "2013-11-17",
+                "location": {
+                    "display": "Vaccination Site"
+                },
+                "lotNumber": "123",
+                "expirationDate": "2024-06-30",
+                "performer": [
+                    {
+                        "actor": {
+                            "reference": "Organization/IMMZ-Organization-enteen-m"
+                        }
+                    }
+                ],
+                "protocolApplied": [
+                    {
+                        "authority": {
+                            "reference": "Organization/IMMZ-Organization-enteen-m"
+                        },
+                        "doseNumberPositiveInt": 2,
+                        "seriesDosesPositiveInt": 2
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Immunization/IMMZ-Immunization-Measles-enteen-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Organization",
+                "id": "IMMZ-Organization-enadult-f",
+                "name": "Government Hospital"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Organization/IMMZ-Organization-enadult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "pregnancy-status-NoVaxAdult-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Observation-pregnancy-status-uv-ips"
+                    ]
+                },
+                "status": "final",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "82810-3",
+                            "display": "Pregnancy status"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-NoVaxAdult-f"
+                },
+                "effectiveDateTime": "2020-01-10",
+                "valueCodeableConcept": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "LA15173-0",
+                            "display": "Pregnant"
+                        }
+                    ]
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Observation/pregnancy-status-NoVaxAdult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Organization",
+                "id": "IMMZ-Organization-enteen-m",
+                "name": "Government Hospital"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Organization/IMMZ-Organization-enteen-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-deceased-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "deceasedcalciumadult-f"
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "1995-04-08",
+                "deceasedBoolean": true,
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-deceased-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Organization",
+                "id": "IMMZ-Organization-enchild-f",
+                "name": "Government Hospital"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Organization/IMMZ-Organization-enchild-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-NoVaxAdult-m",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "NoVaxcalciumadult-m"
+                    }
+                ],
+                "gender": "male",
+                "birthDate": "1993-04-08",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-NoVaxAdult-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Organization",
+                "id": "IMMZ-Organization-eninfant-m",
+                "name": "Government Hospital"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Organization/IMMZ-Organization-eninfant-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-NoVaxeninfant-m",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "NoVaxeninfant-seleniuminfant-m"
+                    }
+                ],
+                "gender": "male",
+                "birthDate": "2022-03-12",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-NoVaxeninfant-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Location",
+                "id": "reporter",
+                "name": "Health District",
+                "physicalType": {
+                    "coding": [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/location-physical-type",
+                            "code": "386012008",
+                            "display": "jdn"
+                        }
+                    ]
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Location/reporter"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Organization",
+                "id": "IMMZ-Organization-enchild-m",
+                "name": "Government Hospital"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Organization/IMMZ-Organization-enchild-m"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-enchild-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "tinchild-f"
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "2014-08-03",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-enchild-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Patient",
+                "id": "IMMZ-Patient-eninfant-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Patient-uv-ips"
+                    ]
+                },
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "hassiuminfant-f"
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "2022-04-28",
+                "address": [
+                    {
+                        "use": "home",
+                        "district": "reporter"
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Patient/IMMZ-Patient-eninfant-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Condition",
+                "id": "sicklecell-enadult-f",
+                "clinicalStatus": {
+                    "coding": [
+                        {
+                            "code": "active"
+                        }
+                    ]
+                },
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "127040003",
+                            "display": "Sickle cell-hemoglobin SS disease (disorder)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-enadult-f"
+                },
+                "recordedDate": "2022-02-02"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Condition/sicklecell-enadult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Condition",
+                "id": "Immunocompromised-NoVaxenteen-f",
+                "clinicalStatus": {
+                    "coding": [
+                        {
+                            "code": "active"
+                        }
+                    ]
+                },
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "370388006",
+                            "display": "Patient immunocompromised (finding)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-NoVaxenteen-f"
+                },
+                "recordedDate": "2021-02-03"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Condition/Immunocompromised-NoVaxenteen-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "cd4countmore-NoVaxAdult-f",
+                "status": "final",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "116745007",
+                            "display": "Cell positive for CD4 antigen (cell)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-NoVaxAdult-f"
+                },
+                "effectiveDateTime": "2020-05-27",
+                "valueQuantity": {
+                    "value": 205,
+                    "unit": "Cell positive for CD4 antigen (cell)",
+                    "system": "http://snomed.info/sct",
+                    "code": "116745007"
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Observation/cd4countmore-NoVaxAdult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "preterm-eninfant-f",
+                "status": "final",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "302080006",
+                            "display": "Finding of birth outcome (finding)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-eninfant-f"
+                },
+                "effectiveDateTime": "2022-04-28",
+                "valueCodeableConcept": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "367494004",
+                            "display": "Premature birth of newborn (finding)"
+                        }
+                    ]
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Observation/preterm-eninfant-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Immunization",
+                "id": "IMMZ-Immunization-Measles-enadult-f",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Immunization-uv-ips"
+                    ]
+                },
+                "status": "completed",
+                "vaccineCode": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "386012008",
+                            "display": "Measles vaccine (product)"
+                        }
+                    ]
+                },
+                "patient": {
+                    "reference": "Patient/IMMZ-Patient-enadult-f"
+                },
+                "occurrenceDateTime": "2021-02-02",
+                "location": {
+                    "display": "Vaccination Site"
+                },
+                "lotNumber": "123",
+                "expirationDate": "2024-06-30",
+                "performer": [
+                    {
+                        "actor": {
+                            "reference": "Organization/IMMZ-Organization-enadult-f"
+                        }
+                    }
+                ],
+                "protocolApplied": [
+                    {
+                        "authority": {
+                            "reference": "Organization/IMMZ-Organization-enadult-f"
+                        },
+                        "doseNumberPositiveInt": 2,
+                        "seriesDosesPositiveInt": 2
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Immunization/IMMZ-Immunization-Measles-enadult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Observation",
+                "id": "HIVAIDS-Yes-NoVaxAdult-f",
+                "status": "final",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "278977008",
+                            "display": "Human immunodeficiency virus status (observable entity)"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/IMMZ-Patient-NoVaxAdult-f"
+                },
+                "effectiveDateTime": "2020-05-27",
+                "valueCodeableConcept": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "10828004",
+                            "display": "Positive (qualifier value)"
+                        }
+                    ]
+                }
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Observation/HIVAIDS-Yes-NoVaxAdult-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Organization",
+                "id": "IMMZ-Organization-enteen-f",
+                "name": "Government Hospital"
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Organization/IMMZ-Organization-enteen-f"
+            }
+        },
+        {
+            "resource": {
+                "resourceType": "Immunization",
+                "id": "IMMZ-Immunization-Measles-enadult-m",
+                "meta": {
+                    "profile": [
+                        "http://worldhealthorganization.github.io/ddcc/StructureDefinition/Immunization-uv-ips"
+                    ]
+                },
+                "status": "completed",
+                "vaccineCode": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "386012008",
+                            "display": "Measles vaccine (product)"
+                        }
+                    ]
+                },
+                "patient": {
+                    "reference": "Patient/IMMZ-Patient-enadult-m"
+                },
+                "occurrenceDateTime": "2019-07-14",
+                "location": {
+                    "display": "Vaccination Site"
+                },
+                "lotNumber": "123",
+                "expirationDate": "2024-06-30",
+                "performer": [
+                    {
+                        "actor": {
+                            "reference": "Organization/IMMZ-Organization-enadult-m"
+                        }
+                    }
+                ],
+                "protocolApplied": [
+                    {
+                        "authority": {
+                            "reference": "Organization/IMMZ-Organization-enadult-m"
+                        },
+                        "doseNumberPositiveInt": 1,
+                        "seriesDosesPositiveInt": 2
+                    }
+                ]
+            },
+            "request": {
+                "method": "PUT",
+                "url": "Immunization/IMMZ-Immunization-Measles-enadult-m"
+            }
+        }
+    ]
+}
