@@ -1,4 +1,7 @@
-import codegen.GenerateSourcesTask
+import Dependencies.forceGuava
+import Dependencies.forceHapiVersion
+import Dependencies.forceJacksonVersion
+import codegen.GenerateSearchParamsTask
 import java.net.URL
 
 plugins {
@@ -14,8 +17,8 @@ publishArtifact(Releases.Engine)
 
 createJacocoTestReportTask()
 
-val generateSourcesTask =
-  project.tasks.register("generateSearchParamsTask", GenerateSourcesTask::class) {
+val generateSearchParamsTask =
+  project.tasks.register("generateSearchParamsTask", GenerateSearchParamsTask::class) {
     srcOutputDir.set(project.layout.buildDirectory.dir("gen/main"))
     testOutputDir.set(project.layout.buildDirectory.dir("gen/test"))
   }
@@ -24,8 +27,8 @@ kotlin {
   sourceSets {
     val main by getting
     val test by getting
-    main.kotlin.srcDirs(generateSourcesTask.map { it.srcOutputDir })
-    test.kotlin.srcDirs(generateSourcesTask.map { it.testOutputDir })
+    main.kotlin.srcDirs(generateSearchParamsTask.map { it.srcOutputDir })
+    test.kotlin.srcDirs(generateSearchParamsTask.map { it.testOutputDir })
   }
   jvmToolchain(11)
 }
@@ -66,8 +69,6 @@ android {
     // Flag to enable support for the new language APIs
     // See https = //developer.android.com/studio/write/java8-support
     isCoreLibraryDesugaringEnabled = true
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
   }
 
   packaging { resources.excludes.addAll(listOf("META-INF/ASL-2.0.txt", "META-INF/LGPL-3.0.txt")) }
@@ -86,6 +87,10 @@ configurations {
     exclude(module = "jakarta.activation-api")
     exclude(module = "javax.activation")
     exclude(module = "jakarta.xml.bind-api")
+
+    forceGuava()
+    forceHapiVersion()
+    forceJacksonVersion()
   }
 }
 
@@ -99,6 +104,17 @@ dependencies {
   androidTestImplementation(Dependencies.truth)
 
   api(Dependencies.HapiFhir.structuresR4) { exclude(module = "junit") }
+
+  // We have removed the dependency on Caffeine from HAPI due to conflicts with android
+  // Guave Caching must be individually loaded instead.
+  implementation(Dependencies.HapiFhir.guavaCaching)
+
+  // Validation to load system types into FhirPath's Context
+  // The loading happens via a ResourceStream in XML and thus
+  // XML parsers are also necessary.
+  implementation(Dependencies.HapiFhir.validationR4)
+  implementation(Dependencies.woodstox)
+  implementation(Dependencies.xerces)
 
   coreLibraryDesugaring(Dependencies.desugarJdkLibs)
 
@@ -147,14 +163,14 @@ tasks.dokkaHtml.configure {
       sourceLink {
         localDirectory.set(file("src/main/java"))
         remoteUrl.set(
-          URL("https://github.com/google/android-fhir/tree/master/engine/src/main/java")
+          URL("https://github.com/google/android-fhir/tree/master/engine/src/main/java"),
         )
         remoteLineSuffix.set("#L")
       }
       externalDocumentationLink {
         url.set(URL("https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/"))
         packageListUrl.set(
-          URL("https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/element-list")
+          URL("https://hapifhir.io/hapi-fhir/apidocs/hapi-fhir-structures-r4/element-list"),
         )
       }
     }

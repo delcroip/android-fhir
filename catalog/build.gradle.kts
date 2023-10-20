@@ -1,3 +1,5 @@
+import Dependencies.forceGuava
+
 plugins {
   id(Plugins.BuildPlugins.application)
   id(Plugins.BuildPlugins.kotlinAndroid)
@@ -30,17 +32,17 @@ android {
     // Flag to enable support for the new language APIs
     // See https://developer.android.com/studio/write/java8-support
     isCoreLibraryDesugaringEnabled = true
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
   }
 
   packaging {
     resources.excludes.addAll(
-      listOf("META-INF/ASL2.0", "META-INF/ASL-2.0.txt", "META-INF/LGPL-3.0.txt")
+      listOf("META-INF/ASL2.0", "META-INF/ASL-2.0.txt", "META-INF/LGPL-3.0.txt"),
     )
   }
   kotlin { jvmToolchain(11) }
 }
+
+configurations { all { forceGuava() } }
 
 dependencies {
   androidTestImplementation(Dependencies.AndroidxTest.extJunit)
@@ -58,6 +60,7 @@ dependencies {
   implementation(Dependencies.Navigation.navUiKtx)
 
   implementation(project(path = ":datacapture"))
+  implementation(project(path = ":engine"))
   implementation(project(path = ":contrib:barcode"))
 
   testImplementation(Dependencies.junit)
